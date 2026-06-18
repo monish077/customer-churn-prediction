@@ -289,7 +289,7 @@ st.markdown("""
 # ---------------- LOAD MODEL ----------------
 @st.cache_resource
 def load_model():
-    path = "models/churn_pipeline.pkl"
+    path = "models/churn_model.pkl"
     if not os.path.exists(path):
         return None
     return joblib.load(path)
