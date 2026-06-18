@@ -1,5 +1,8 @@
 #!/bin/bash
-echo "?? Installing system dependencies..."
-sudo apt-get update
-sudo apt-get install -y zlib1g-dev libjpeg-dev libpng-dev
-echo "? System dependencies installed!"
+echo "?? Installing joblib..."
+pip install joblib
+echo "? joblib installed!"
+
+echo "?? Installing all dependencies..."
+pip install -r requirements.txt
+echo "? All dependencies installed!"
