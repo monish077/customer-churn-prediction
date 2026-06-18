@@ -4,7 +4,6 @@ import numpy as np
 import joblib
 import os
 import plotly.graph_objects as go
-from plotly.subplots import make_subplots
 
 # ---------------- PAGE CONFIG ----------------
 st.set_page_config(
@@ -20,6 +19,112 @@ st.markdown("""
     /* Main background */
     .stApp {
         background: linear-gradient(135deg, #0a0e1a 0%, #1a1f36 100%);
+    }
+    
+    /* Sidebar - Dark theme */
+    .stSidebar {
+        background: rgba(10, 14, 26, 0.98) !important;
+        border-right: 1px solid rgba(255, 255, 255, 0.05) !important;
+    }
+    
+    .stSidebar .st-emotion-cache-1kss9tm {
+        background: rgba(10, 14, 26, 0.98) !important;
+    }
+    
+    /* Sidebar content */
+    .stSidebar .st-emotion-cache-155jwzh {
+        background: rgba(10, 14, 26, 0.98) !important;
+    }
+    
+    /* Sidebar labels - white for better contrast */
+    .stSidebar .st-emotion-cache-1s2v671 {
+        color: #e0e6ed !important;
+        font-weight: 500 !important;
+        font-size: 0.9rem !important;
+    }
+    
+    .stSidebar label {
+        color: #e0e6ed !important;
+        font-weight: 500 !important;
+    }
+    
+    /* Sidebar slider values */
+    .stSidebar .st-emotion-cache-152mi7 {
+        color: #e0e6ed !important;
+        font-weight: 600 !important;
+    }
+    
+    .stSidebar .st-emotion-cache-86wq5c p {
+        color: #e0e6ed !important;
+    }
+    
+    /* Sidebar select box */
+    .stSidebar .stSelectbox div[data-baseweb="select"] {
+        background: rgba(26, 31, 54, 0.6) !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        border-radius: 8px !important;
+    }
+    
+    .stSidebar .stSelectbox div[data-baseweb="select"]:hover {
+        border-color: rgba(102, 126, 234, 0.5) !important;
+    }
+    
+    .stSidebar .stSelectbox .st-bx {
+        color: #e0e6ed !important;
+    }
+    
+    /* Sidebar slider track */
+    .stSidebar .stSlider .st-an {
+        background: rgba(255, 255, 255, 0.08) !important;
+    }
+    
+    .stSidebar .stSlider .st-ef {
+        background: linear-gradient(90deg, #667eea, #764ba2) !important;
+    }
+    
+    /* Sidebar slider thumb */
+    .stSidebar .stSlider .st-emotion-cache-11xx4re {
+        background: linear-gradient(135deg, #667eea, #764ba2) !important;
+        border: 2px solid #667eea !important;
+    }
+    
+    /* Sidebar header */
+    .stSidebar h2 {
+        color: #e0e6ed !important;
+        font-weight: 600 !important;
+    }
+    
+    .stSidebar p {
+        color: #8892b0 !important;
+    }
+    
+    /* Sidebar dividers */
+    .stSidebar hr {
+        border-color: rgba(255, 255, 255, 0.05) !important;
+    }
+    
+    /* Hide tooltip icons */
+    .stTooltipIcon {
+        display: none !important;
+    }
+    
+    /* Hide collapse button */
+    .stSidebar .st-emotion-cache-qmp9ai {
+        display: none !important;
+    }
+    
+    /* Sidebar scrollbar */
+    .stSidebar ::-webkit-scrollbar {
+        width: 4px;
+    }
+    
+    .stSidebar ::-webkit-scrollbar-track {
+        background: rgba(26, 31, 54, 0.3);
+    }
+    
+    .stSidebar ::-webkit-scrollbar-thumb {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        border-radius: 4px;
     }
     
     /* Cards */
@@ -75,28 +180,6 @@ st.markdown("""
     .stButton > button:hover {
         transform: translateY(-2px) !important;
         box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5) !important;
-    }
-    
-    /* Sidebar */
-    .css-1d391kg {
-        background: rgba(10, 14, 26, 0.95) !important;
-        backdrop-filter: blur(10px);
-        border-right: 1px solid rgba(255, 255, 255, 0.05);
-    }
-    
-    .css-1d391kg h2 {
-        color: #e0e6ed !important;
-    }
-    
-    /* Select boxes and sliders */
-    .stSelectbox, .stSlider {
-        color: #e0e6ed !important;
-    }
-    
-    .stSelectbox label, .stSlider label {
-        color: #8892b0 !important;
-        font-size: 0.85rem !important;
-        font-weight: 500 !important;
     }
     
     /* Success/Error/Warning boxes */
@@ -206,7 +289,7 @@ st.markdown("""
 # ---------------- LOAD MODEL ----------------
 @st.cache_resource
 def load_model():
-    path = "models/churn_model.pkl"
+    path = "models/churn_pipeline.pkl"
     if not os.path.exists(path):
         return None
     return joblib.load(path)
@@ -233,23 +316,23 @@ st.markdown("""
 # ---------------- INPUT UI ----------------
 with st.sidebar:
     st.markdown("""
-    <div style="text-align: center; padding: 10px 0;">
-        <h2 style="color: #e0e6ed; font-size: 1.3rem;">🎯 Customer Information</h2>
+    <div style="text-align: center; padding: 10px 0 20px 0;">
+        <h2 style="color: #e0e6ed; font-size: 1.3rem; margin-bottom: 5px;">🎯 Customer Information</h2>
         <p style="color: #8892b0; font-size: 0.85rem;">Enter customer details for churn prediction</p>
     </div>
     """, unsafe_allow_html=True)
     
     st.markdown("---")
     
-    age = st.slider("Age", 18, 70, 35, help="Customer's age")
+    age = st.slider("Age", 18, 70, 35)
     gender = st.selectbox("Gender", ["Male", "Female"])
-    tenure = st.slider("Tenure (months)", 1, 72, 12, help="Months with the company")
-    usage = st.slider("Usage Frequency", 1, 50, 20, help="Times used per month")
-    support = st.slider("Support Calls", 0, 10, 3, help="Number of support calls")
-    delay = st.slider("Payment Delay", 0, 30, 5, help="Days payment is delayed")
+    tenure = st.slider("Tenure (months)", 1, 72, 12)
+    usage = st.slider("Usage Frequency", 1, 50, 20)
+    support = st.slider("Support Calls", 0, 10, 3)
+    delay = st.slider("Payment Delay", 0, 30, 5)
     sub_type = st.selectbox("Subscription Type", ["Basic", "Standard", "Premium"])
     contract = st.selectbox("Contract Length", ["Monthly", "Quarterly", "Yearly"])
-    spend = st.slider("Total Spend", 100, 5000, 1500, help="Total spending amount")
+    spend = st.slider("Total Spend", 100, 5000, 1500)
 
 # ---------------- FEATURE ENGINEERING ----------------
 def engineer_features(df):
@@ -361,7 +444,6 @@ if st.button("🔮 Predict Churn", type="primary", use_container_width=True):
             # ---------------- RESULT DISPLAY ----------------
             st.markdown("### 📊 Prediction Result")
             
-            # Create two columns for result
             col1, col2 = st.columns([1, 1.5])
             
             with col1:
@@ -391,7 +473,6 @@ if st.button("🔮 Predict Churn", type="primary", use_container_width=True):
                     """, unsafe_allow_html=True)
             
             with col2:
-                # Create gauge chart
                 fig = go.Figure(go.Indicator(
                     mode = "gauge+number",
                     value = probability * 100,
