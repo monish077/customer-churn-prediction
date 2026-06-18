@@ -1,4 +1,4 @@
-📊 Customer Churn Prediction System
+#**📊 Customer Churn Prediction System**
 A production-ready machine learning system that predicts customer churn with an interactive dashboard, providing real-time insights and actionable retention strategies.
 
 https://static.streamlit.io/badges/streamlit_badge_black_white.svg
@@ -6,10 +6,10 @@ https://img.shields.io/github/stars/monish077/customer-churn-prediction
 https://img.shields.io/badge/License-MIT-green.svg
 https://img.shields.io/badge/python-3.11+-blue.svg
 
-🌐 Live Demo
-Try the live application: Customer Churn Predictor
+##**🌐 Live Demo**
+Try the live application: https://customer-churn-prediction-mrfnyfzzj55die3asdzfvs.streamlit.app/
 
-📊 Model Performance
+##**📊 Model Performance**
 Our best-performing model (Random Forest) achieves excellent predictive accuracy:
 
 Metric	Score
@@ -23,8 +23,10 @@ Model	Accuracy	Precision	Recall	F1 Score	AUC-ROC
 Logistic Regression	91.3%	92.2%	91.3%	90.4%	79.8%
 Random Forest	91.5%	92.3%	91.5%	90.7%	80.2%
 XGBoost	90.9%	91.3%	90.9%	90.1%	80.0%
-🚀 Features
-Core Functionality
+
+##**🚀 Features**
+
+**Core Functionality**
 ✅ Real-time Predictions: Get instant churn probability scores for any customer
 
 ✅ Interactive Dashboard: User-friendly interface with sliders and dropdowns
@@ -35,7 +37,7 @@ Core Functionality
 
 ✅ Professional UI: Dark theme with modern glass-morphism design
 
-Technical Features
+**Technical Features**
 ✅ Production Ready: Deployable on Streamlit Cloud, Hugging Face, or Render
 
 ✅ ML Pipeline: Complete preprocessing and model pipeline
@@ -44,7 +46,7 @@ Technical Features
 
 ✅ Feature Analysis: Detailed breakdown of customer features
 
-🛠️ Tech Stack
+**🛠️ Tech Stack**
 Category	Technologies
 Frontend	Streamlit, Plotly
 ML Framework	Scikit-learn, XGBoost
@@ -52,8 +54,10 @@ Data Processing	Pandas, NumPy
 Model Serialization	Joblib
 Visualization	Matplotlib, Seaborn, Plotly
 Deployment	Streamlit Cloud
-📁 Project Structure
+
+**📁 Project Structure**
 text
+
 customer-churn-prediction/
 ├── app/
 │   └── app.py                 # Main Streamlit application with dark theme
@@ -114,7 +118,7 @@ bash
 streamlit run app/app.py
 The app will open in your browser at http://localhost:8501.
 
-🎯 How It Works
+**🎯 How It Works**
 Feature Engineering
 The system creates several engineered features for better predictions:
 
@@ -219,7 +223,7 @@ Monish
 
 GitHub: @monish077
 
-Project Link: customer-churn-prediction
+Project Link: [customer-churn-prediction](https://customer-churn-prediction-mrfnyfzzj55die3asdzfvs.streamlit.app/)
 
 🙏 Acknowledgments
 Streamlit for the amazing framework
