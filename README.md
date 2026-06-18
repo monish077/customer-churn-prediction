@@ -1,324 +1,169 @@
-# 📊 Customer Churn Prediction System
+# 📊 Customer Churn Dataset
 
-A production-ready machine learning system that predicts customer churn with an interactive dashboard, providing real-time insights and actionable retention strategies.
+## Dataset Overview
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://customer-churn-prediction-mrfnyfzzj55die3asdzfvs.streamlit.app/)
-[![GitHub stars](https://img.shields.io/github/stars/monish077/customer-churn-prediction)](https://github.com/monish077/customer-churn-prediction/stargazers)
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
-[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
+This dataset contains **440,882 customer records** with their respective features and churn labels. It serves as the primary resource for training machine learning models to predict customer churn.
 
 ---
 
-## 🌐 Live Demo
+## 📋 Dataset Description
 
-**Try the live application:** [Customer Churn Predictor](https://customer-churn-prediction-mrfnyfzzj55die3asdzfvs.streamlit.app/)
+### Purpose
+The dataset is designed to help businesses develop accurate churn prediction models to identify customers who are most likely to churn and take proactive actions to retain them.
+
+### Source
+- **Total Records**: 440,882
+- **Features**: 10 input features + 1 target variable
+- **Target**: Churn label (1 = Churned, 0 = Not Churned)
 
 ---
 
-## 📊 Model Performance
+## 🗂️ Feature Descriptions
 
-Our best-performing model (**Random Forest**) achieves excellent predictive accuracy:
+| Feature | Type | Description | Range/Values |
+|---------|------|-------------|--------------|
+| **Age** | Numerical | Customer's age | 18-70 years |
+| **Gender** | Categorical | Customer's gender | Male, Female |
+| **Tenure** | Numerical | Time with the company | 1-72 months |
+| **Usage Frequency** | Numerical | Monthly usage frequency | 1-50 times |
+| **Support Calls** | Numerical | Number of support calls made | 0-10 calls |
+| **Payment Delay** | Numerical | Days payment is delayed | 0-30 days |
+| **Subscription Type** | Categorical | Type of subscription | Basic, Standard, Premium |
+| **Contract Length** | Categorical | Length of contract | Monthly, Quarterly, Yearly |
+| **Total Spend** | Numerical | Total spending amount | $100-$5,000 |
+| **Last Interaction** | Numerical | Days since last interaction | Varies |
+| **Churn** | Target | Whether customer churned | 0 = No, 1 = Yes |
 
-| Metric | Score |
+---
+
+## 📊 Dataset Statistics
+
+| Metric | Value |
 |--------|-------|
-| **Accuracy** | 91.5% |
-| **Precision** | 92.3% |
-| **Recall** | 91.5% |
-| **F1 Score** | 90.7% |
-| **AUC-ROC** | 80.2% |
-
-### Model Comparison
-
-| Model | Accuracy | Precision | Recall | F1 Score | AUC-ROC |
-|-------|----------|-----------|--------|----------|---------|
-| Logistic Regression | 91.3% | 92.2% | 91.3% | 90.4% | 79.8% |
-| **Random Forest** | **91.5%** | **92.3%** | **91.5%** | **90.7%** | **80.2%** |
-| XGBoost | 90.9% | 91.3% | 90.9% | 90.1% | 80.0% |
+| **Total Records** | 440,882 |
+| **Total Features** | 11 (10 input + 1 target) |
+| **Target Distribution** | [Add your distribution] |
+| **Churn Rate** | [Add your churn rate] |
 
 ---
 
-## 🚀 Features
+## 🎯 Data Usage
 
-### Core Functionality
-- ✅ **Real-time Predictions**: Get instant churn probability scores for any customer
-- ✅ **Interactive Dashboard**: User-friendly interface with sliders and dropdowns
-- ✅ **Feature Engineering**: Automated feature engineering matching training data
-- ✅ **Business Insights**: Actionable recommendations for customer retention
-- ✅ **Professional UI**: Dark theme with modern glass-morphism design
+### Training
+This dataset is used to train machine learning models for churn prediction. The models learn patterns from customer behavior and demographics to predict future churn.
 
-### Technical Features
-- ✅ **Production Ready**: Deployable on Streamlit Cloud, Hugging Face, or Render
-- ✅ **ML Pipeline**: Complete preprocessing and model pipeline
-- ✅ **Visual Analytics**: Interactive gauge charts and metric displays
-- ✅ **Feature Analysis**: Detailed breakdown of customer features
+### Feature Engineering
+The raw features can be transformed to create more meaningful features:
 
----
-
-## 🛠️ Tech Stack
-
-| Category | Technologies |
-|----------|--------------|
-| **Frontend** | Streamlit, Plotly |
-| **ML Framework** | Scikit-learn, XGBoost |
-| **Data Processing** | Pandas, NumPy |
-| **Model Serialization** | Joblib |
-| **Visualization** | Matplotlib, Seaborn, Plotly |
-| **Deployment** | Streamlit Cloud |
+| Engineered Feature | Description |
+|--------------------|-------------|
+| **Tenure Group** | Categorized tenure (New, Regular, Loyal, VIP) |
+| **Avg Monthly Spend** | Total spend / Tenure |
+| **Support Intensity** | Support calls / Tenure |
+| **Payment Reliability** | 1 / (Payment Delay + 1) |
+| **Risk Score** | Composite risk metric |
 
 ---
 
-## 📁 Project Structure
-customer-churn-prediction/
-├── app/
-│ └── app.py # Main Streamlit application with dark theme
-├── models/
-│ └── churn_pipeline.pkl # Trained Random Forest model
-├── data/
-│ └── raw/ # Dataset files
-├── notebooks/ # Jupyter notebooks for exploration
-│ ├── 01_data_exploration.ipynb
-│ ├── 02_feature_engineering.ipynb
-│ └── 03_model_training.ipynb
-├── src/ # Source code modules
-│ ├── data_preprocessing.py
-│ ├── feature_engineering.py
-│ ├── model_training.py
-│ └── utils.py
-├── .streamlit/
-│ └── config.toml # Streamlit configuration
-├── runtime.txt # Python 3.11 specification
-├── packages.txt # System dependencies
-├── requirements.txt # Python dependencies
-├── setup.sh # Deployment setup script
-├── run.py # Model training script
-└── README.md # Documentation
+## 📁 File Structure
+data/
+├── raw/
+│ ├── customer_churn_dataset-training-master-selected-columns.csv # Training data
+│ └── [other dataset files]
+├── processed/ # Processed data (if any)
+└── README.md # This file
 
 text
 
 ---
 
-## 🏃‍♂️ Local Setup
+## 🔍 Sample Data
 
-### Prerequisites
-- Python 3.11 or higher
-- Git
+| Age | Gender | Tenure | Usage Frequency | Support Calls | Payment Delay | Subscription Type | Contract Length | Total Spend | Last Interaction | Churn |
+|-----|--------|--------|-----------------|---------------|---------------|-------------------|-----------------|-------------|------------------|-------|
+| 35 | Male | 12 | 20 | 3 | 5 | Basic | Monthly | 1500 | 7 | 0 |
+| 42 | Female | 24 | 35 | 1 | 2 | Premium | Yearly | 3800 | 15 | 0 |
+| 28 | Male | 3 | 10 | 8 | 15 | Basic | Monthly | 400 | 2 | 1 |
 
-### Installation Steps
+---
 
-1. **Clone the repository**
-```bash
-git clone https://github.com/monish077/customer-churn-prediction.git
-cd customer-churn-prediction
-Create and activate a virtual environment
+## 📈 Business Applications
 
+This dataset enables businesses to:
+
+- **Predict Churn**: Identify customers at risk of leaving
+- **Take Action**: Proactively retain valuable customers
+- **Reduce Costs**: Lower customer acquisition costs
+- **Increase Revenue**: Target retention campaigns effectively
+- **Improve Products**: Understand why customers leave
+
+---
+
+## 📝 License
+
+This dataset is provided for educational and research purposes.
+
+---
+
+## 🤝 Acknowledgments
+
+- Dataset generated for Customer Churn Prediction project
+- Synthetic dataset for machine learning training
+
+---
+
+**📊 For more information, visit the [main repository](https://github.com/monish077/customer-churn-prediction).**
+To Add This to Your Repository:
 bash
-# Windows
-python -m venv venv
-venv\Scripts\activate
-
-# Mac/Linux
-python3 -m venv venv
-source venv/bin/activate
-Install dependencies
-
-bash
-pip install -r requirements.txt
-Train the model (optional)
-
-bash
-python run.py
-Run the Streamlit app
-
-bash
-streamlit run app/app.py
-The app will open in your browser at http://localhost:8501.
-
-🎯 How It Works
-Feature Engineering
-The system creates several engineered features for better predictions:
-
-Feature	Description
-Tenure Group	Categorizes customer tenure (New, Regular, Loyal, VIP)
-Avg Monthly Spend	Total spend divided by tenure
-Support Intensity	Support calls divided by tenure
-Payment Reliability	Inverse of payment delay
-Risk Score	Composite risk metric combining multiple factors
-Input Features
-Feature	Range	Description
-Age	18-70	Customer age
-Gender	Male/Female	Customer gender
-Tenure	1-72 months	Time with company
-Usage Frequency	1-50	Monthly usage count
-Support Calls	0-10	Number of support calls
-Payment Delay	0-30 days	Days payment is delayed
-Subscription Type	Basic/Standard/Premium	Service tier
-Contract Length	Monthly/Quarterly/Yearly	Contract duration
-Total Spend	100-5000	Total spending amount
-📈 Business Impact
-Retention Benefits
-🎯 Early Warning: Identify at-risk customers before they churn
-
-🎯 Targeted Campaigns: Focus retention efforts on high-risk customers
-
-🎯 Cost Reduction: Reduce customer acquisition costs by retaining existing customers
-
-Revenue Opportunities
-💰 Upselling: Identify customers ready for premium upgrades
-
-💰 Cross-selling: Recommend complementary services
-
-💰 Loyalty Programs: Design effective loyalty incentives
-
-Operational Efficiency
-⚡ Automated Prediction: Reduce manual risk assessment time
-
-⚡ Data-Driven Decisions: Make informed retention strategy decisions
-
-⚡ Performance Monitoring: Track churn patterns over time
-
-🚀 Deployment
-Streamlit Cloud (Recommended)
-Push code to GitHub repository
-
-Visit share.streamlit.io
-
-Connect your GitHub account
-
-Deploy with:
-
-Repository: monish077/customer-churn-prediction
-
-Branch: main
-
-Main file: app/app.py
-
-Python version: 3.11
-
-Hugging Face Spaces
-Visit huggingface.co/new-space
-
-Select "Streamlit" SDK
-
-Choose Python 3.11
-
-Upload your files
-
-🤝 Contributing
-We welcome contributions! Here's how you can help:
-
-Fork the repository
-
-Create a feature branch
-
-bash
-git checkout -b feature/amazing-feature
-Make your changes
-
-Commit and push
-
-bash
-git commit -m "Add amazing feature"
-git push origin feature/amazing-feature
-Open a Pull Request
-
-Contribution Guidelines
-Follow existing code style
-
-Add tests for new features
-
-Update documentation
-
-Ensure all tests pass
-
-📝 License
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-👨‍💻 Author
-Monish
-
-GitHub: @monish077
-
-Project Link: customer-churn-prediction
-
-🙏 Acknowledgments
-Streamlit for the amazing framework
-
-Scikit-learn for ML algorithms
-
-XGBoost for gradient boosting
-
-📞 Support
-For issues, questions, or suggestions:
-
-Open an issue
-
-Fork the repository
-
-Star the project ⭐
-
-Made with ❤️ by Monish | Live Demo
-
-📊 Quick Start Commands
-bash
-# Clone the repository
-git clone https://github.com/monish077/customer-churn-prediction.git
-cd customer-churn-prediction
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Run the app
-streamlit run app/app.py
-🔧 Environment Variables
-No environment variables are required for local development. The app uses default settings.
-
-📊 Dataset
-The model is trained on customer data with the following characteristics:
-
-Records: 5000 customer records
-
-Features: 9 input features
-
-Target: Churn (Yes/No)
-
-Data Source: Synthetic customer churn dataset
-
-🏆 Key Achievements
-✅ 91.5% accuracy in predicting customer churn
-
-✅ Production-ready with professional UI
-
-✅ Real-time predictions with visual analytics
-
-✅ Actionable business insights
-
-✅ Successful deployment on Streamlit Cloud
-
-⭐ If you like this project, please give it a star on GitHub!
-
-text
-
-## How to Use:
-
-1. **Copy** the entire content above
-2. **Open** your `README.md` file
-3. **Replace** all existing content with the copied content
-4. **Save** the file
-5. **Push** to GitHub
-
-## Quick Push Commands:
-
-```bash
 cd "D:\Data science course materials\Customer Chunk Prediction"
 
-# Pull latest changes first
-git pull origin main --rebase
+# Create data directory if it doesn't exist
+mkdir data 2>$null
 
-# Add README
-git add README.md
+# Create data/README.md with the content above
+# (You can copy the content and save it)
+
+# Add and commit
+git add data/README.md
+git commit -m "📊 Add dataset documentation"
+git push origin main
+Alternative: Add to Main README.md
+If you prefer, you can add this as a section in your main README.md:
+
+markdown
+## 📊 Dataset
+
+The training dataset contains **440,882 customer records** with features including age, gender, tenure, usage frequency, support calls, payment delay, subscription type, contract length, total spend, and last interaction. The churn label indicates whether a customer has churned (1) or not (0).
+
+### Features
+
+| Feature | Description |
+|---------|-------------|
+| Age | Customer's age (18-70) |
+| Gender | Male/Female |
+| Tenure | Months with company (1-72) |
+| Usage Frequency | Monthly usage count (1-50) |
+| Support Calls | Number of support calls (0-10) |
+| Payment Delay | Days payment is delayed (0-30) |
+| Subscription Type | Basic/Standard/Premium |
+| Contract Length | Monthly/Quarterly/Yearly |
+| Total Spend | Total spending ($100-$5,000) |
+| Last Interaction | Days since last interaction |
+| **Churn** | **Target: 0=No, 1=Yes** |
+
+The dataset enables businesses to identify customers most likely to churn and take proactive retention actions.
+Quick Update Commands:
+bash
+cd "D:\Data science course materials\Customer Chunk Prediction"
+
+# Add dataset documentation
+git add data/README.md
 
 # Commit
-git commit -m "📝 Update README with proper formatting"
+git commit -m "📊 Add dataset documentation and description"
+
+# Pull latest (if needed)
+git pull origin main --rebase
 
 # Push
 git push origin main
